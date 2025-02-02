@@ -13,13 +13,11 @@ app.use(bodyParser.json())
 
 
 // Add after bodyParser middleware in app.js
-mongoose.connect("mongodb://localhost:27017/your-db-name", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect("mongodb://localhost:27017/your-db-name")
 .then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
 
+mongoose.Promise = global.Promise;
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(

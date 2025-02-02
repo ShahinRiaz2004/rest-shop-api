@@ -7,7 +7,7 @@ const Product = require("../models/product");
 router.get("/", (req, res, next) => {
     Product.find()
         .select("name price _id") // Select specific fields
-        .exec()
+        .exec() 
         .then(docs => {
             const response = {
                 count: docs.length,
